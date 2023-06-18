@@ -25,12 +25,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           DEFAULT_BUMP: minor
-      - name: Copy artifact to staging directory
-        run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Package
-          path: staging
       - name: Create GitHub release
         id: create-new-release
         uses: actions/create-release@v1
