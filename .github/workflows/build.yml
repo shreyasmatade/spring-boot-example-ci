@@ -20,7 +20,7 @@ jobs:
       - name: Get Version
         id: get_version
         run: |
-          VERSION="Hello World"
+          VERSION="${GITHUB_REF/refs\/tags\//}"
           echo "Output [$VERSION]"
           echo "VERSION=$VERSION" >> $GITHUB_OUTPUT 
       - name: Print Version
