@@ -26,13 +26,23 @@ jobs:
           WITH_V: true
           DEFAULT_BUMP: minor
       - name: Create GitHub release
-        id: create-new-release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
-          release_name: Release ${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/your-artifactId-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_name: your-artifactId-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_content_type: application/java-archive
 
