@@ -17,9 +17,7 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      - name: Integration/Unit Test
-        run: mvn test
-      - name: Build with Maven
+      - name: Test, Build, Pacakge with Maven
         run: mvn --batch-mode -Drevision=${{ steps.get_version.outputs.VERSION }} --update-snapshots package
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.64.0 # Don't use @master or @v1 unless you're happy to test the latest version
