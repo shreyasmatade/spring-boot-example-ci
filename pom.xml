@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example.ci</groupId>
 	<artifactId>example-ci</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 	<name>example-ci</name>
 	<description>Project for Spring Boot with Github actions CI</description>
 	<properties>
