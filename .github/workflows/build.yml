@@ -22,7 +22,7 @@ jobs:
         run: echo "{VERSION}={TestTest}" >> $GITHUB_OUTPUT
       - name: Print Version
         id: print_version
-        run: echo "${{ steps.get_version.outputs.VERSION }}"
+        run: echo "${{ steps.get_version.VERSION }}"
       # - name: Test, Build, Pacakge with Maven
       #   run: mvn --batch-mode -Drevision=${{ steps.get_version.outputs.VERSION }} --update-snapshots package
       # - name: Bump version and push tag
